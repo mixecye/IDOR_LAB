@@ -8,26 +8,17 @@
 <body>
     <h2>بيانات المستخدم:</h2>
     <p><strong>ID:</strong> <span id="userId"></span></p>
-    <p><strong>الاسم:</strong> <span id="userName"></span></p>
-    <p><strong>البريد الإلكتروني:</strong> <span id="userEmail"></span></p>
-
+    <p><strong>name:</strong> <span id="userName"></span></p>
+    <p><strong>email:</strong> <span id="userEmail"></span></p>
     <script>
-        // قاعدة بيانات وهمية (في الحقيقة تكون في الـ backend)
         const users = {
-            "1": { name: "Ahmed", email: "ahmed@example.com" },
-            "2": { name: "Sara", email: "sara@example.com" },
-            "3": { name: "Omar", email: "omar@example.com" }
+            "1": { name: "Ahmed", email: "ahmed@gmail.com" },
+            "2": { name: "Sara", email: "sara@yahoo.com" },
+            "3": { name: "Omar", email: "omar@express.com" }
         };
-
-        // قراءة الـ id من الرابط
         const userPr= new URLSearchParams(window.location.search);
         const userId=userPr.get("id") 
-    console.log("Extracted ID:", userId); // تأكد من القيمة
-    console.log("Full URL:", window.location.href);
-    console.log("Query String:", window.location.search);
-    console.log("Extracted ID:", userId);
     console.log("Users Object Keys:", Object.keys(users)); 
-    // عرض بيانات المستخدم بدون تحقق من الصلاحيات (ثغرة IDOR)
         if(userId in users){
             document.getElementById("userId").textContent = userId;
             document.getElementById("userName").textContent =  users[userId].name;
